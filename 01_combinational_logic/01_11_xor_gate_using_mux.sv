@@ -9,6 +9,18 @@ module mux
 
 endmodule
 
+module not_gate_using_mux
+(
+    input  i,
+    output o
+);
+
+  // Implement not gate using instance(s) of mux,
+  // constants 0 and 1, and wire connections
+
+  mux m(.d0(1'd1),.d1(1'd0),.y(o),.sel(i));
+endmodule
+
 //----------------------------------------------------------------------------
 
 module xor_gate_using_mux
@@ -23,7 +35,9 @@ module xor_gate_using_mux
   // Implement xor gate using instance(s) of mux,
   // constants 0 and 1, and wire connections
 
-
+  wire t;
+  not_gate_using_mux n(.i(a),.o(t));
+  mux m(.d0(a),.d1(t),.sel(b),.y(o));
 endmodule
 
 //----------------------------------------------------------------------------

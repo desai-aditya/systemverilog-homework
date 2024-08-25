@@ -20,8 +20,12 @@ module mux_4_1
 
   // TODO
 
+  wire [3:0]t1;
+  wire [3:0]t2;
   // Implement mux_4_1 using three instances of mux_2_1
-
+  mux_2_1 m1 (.d0(d0), .d1(d1), .sel(sel[0]), .y(t1));
+  mux_2_1 m2 (.d0(d2), .d1(d3), .sel(sel[0]), .y(t2));
+  mux_2_1 m3 (.d0(t1), .d1(t2), .sel(sel[1]), .y(y));
 
 endmodule
 
